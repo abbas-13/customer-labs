@@ -1,0 +1,4 @@
+.drawer [class~="ant-drawer-header"],
+.drawer [class~="ant-drawer-body"] {
+  padding: 0;
+}
