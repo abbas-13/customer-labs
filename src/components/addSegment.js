@@ -1,6 +1,8 @@
 import { Button, Form, Input, message, Select } from "antd";
 import classNames from "classnames";
 
+import styles from "./addSegment.module.css";
+
 const AddSegment = () => {
   const [addSegmentForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
@@ -90,13 +92,13 @@ const AddSegment = () => {
             To save your segment, you need to add the schemas to build the query
           </p>
 
-          <div className="flex gap-4 my-4 justify-end">
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-green-500"></div>
+          <div className={styles["badges-container"]}>
+            <div className={styles["badge-container"]}>
+              <div className={styles["user-traits-badge"]}></div>
               <p> - User Traits</p>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+            <div className={styles["badge-container"]}>
+              <div className={styles["group-traits-badge"]}></div>
               <p> - Group Traits</p>
             </div>
           </div>
@@ -111,7 +113,7 @@ const AddSegment = () => {
                       addSegmentForm.getFieldsValue().segments[name];
 
                     return (
-                      <div className="flex w-full gap-1 justify-between items-center mb-4">
+                      <div className={styles["form-item-container"]}>
                         <div
                           className={classNames(
                             "h-3 w-3 rounded-full",
@@ -132,13 +134,13 @@ const AddSegment = () => {
                           />
                         </Form.Item>
                         <div
-                          className="h-[48px] w-[48px] p-2 flex items-center rounded-md bg-[#F2FAF8]"
+                          className={styles["remove-button-main"]}
                           onClick={() => {
                             remove(name);
                             handleSelectChange();
                           }}
                         >
-                          <div className="bg-[#5F6E87] rounded-md w-full h-1"></div>
+                          <div className={styles["remove-button-inside"]}></div>
                         </div>
                       </div>
                     );
@@ -166,7 +168,7 @@ const AddSegment = () => {
           </Form.List>
         </div>
         <Form.Item className="m-0">
-          <div className="flex gap-3 h-24 bg-gray-100 items-center p-2 pl-4">
+          <div className={styles["buttons-container"]}>
             <Button
               className="text-white bg-[#57AA8E] h-[42px]"
               htmlType="submit"

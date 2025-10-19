@@ -2,3 +2,15 @@
 .drawer [class~="ant-drawer-body"] {
   @apply p-0;
 }
+
+.home-container {
+  @apply w-full h-full backdrop-blur-lg bg-black/30 p-2;
+}
+
+.heading-container {
+  @apply h-16 bg-[#53A1B2] w-full flex gap-2 items-center p-2;
+}
+
+.heading {
+  @apply text-white text-lg;
+}
