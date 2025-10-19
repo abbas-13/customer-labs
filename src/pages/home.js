@@ -37,7 +37,7 @@ const Home = () => {
         open={drawerOpen}
         closable={false}
       >
-        <AddSegment />
+        <AddSegment closeDrawer={() => setDrawerOpen(false)} />
       </Drawer>
     </div>
   );

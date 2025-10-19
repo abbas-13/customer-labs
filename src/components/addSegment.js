@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import styles from "./addSegment.module.css";
 
-const AddSegment = () => {
+const AddSegment = ({ closeDrawer }) => {
   const [addSegmentForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -183,7 +183,9 @@ const AddSegment = () => {
             >
               Save the segment
             </Button>
-            <Button className="h-[42px] text-red">Cancel</Button>
+            <Button className="h-[42px] text-red" onClick={closeDrawer}>
+              Cancel
+            </Button>
           </div>
         </Form.Item>
       </Form>
