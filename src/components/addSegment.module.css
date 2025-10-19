@@ -2,7 +2,7 @@
   @apply flex gap-3 h-24 bg-gray-100 items-center p-2 pl-4;
 }
 
-.form-items-container {
+.form-item-container {
   @apply flex w-full gap-1 justify-between items-center mb-4;
 }
 
