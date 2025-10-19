@@ -8,14 +8,7 @@ const Navbar = () => {
 
   return (
     <div className="h-16 bg-[#53A1B2] w-full flex gap-2 items-center p-2">
-      <LeftOutlined
-        style={{
-          fontSize: "16px",
-          color: "white",
-          stroke: "white",
-          strokeWidth: "50",
-        }}
-      />
+      <LeftOutlined className="text-lg text-white stroke-white stroke-[50]" />
       <h2 className="text-white text-lg">{heading}</h2>
     </div>
   );

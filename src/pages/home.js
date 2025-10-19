@@ -17,12 +17,7 @@ const Home = () => {
       <Button
         size="large"
         ghost
-        style={{
-          color: "white",
-          borderRadius: "0",
-          border: "2px solid white",
-          margin: "1rem 0 0 3rem",
-        }}
+        className="text-white rounded-none border-2 border-white mt-[1rem] mb-0 mr-0 ml-[3rem]"
         onClick={() => setDrawerOpen(true)}
       >
         Save Segment
@@ -34,12 +29,7 @@ const Home = () => {
           <div className="h-16 bg-[#53A1B2] w-full flex gap-2 items-center p-2">
             <LeftOutlined
               onClick={() => setDrawerOpen(false)}
-              style={{
-                fontSize: "18px",
-                color: "white",
-                stroke: "white",
-                strokeWidth: "50",
-              }}
+              className="text-lg text-white stroke-white stroke-[50]"
             />
             <h2 className="text-white text-lg">Saving Segment</h2>
           </div>

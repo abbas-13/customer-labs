@@ -3,7 +3,7 @@ import Navbar from "./navbar";
 
 const Appshell = ({ children }) => {
   return (
-    <Layout style={{ height: "100%", width: "100%" }}>
+    <Layout className="h-full w-full">
       <Navbar />
       <div className="bg-[url(./bg-image.png)] w-full h-full">{children}</div>
     </Layout>
