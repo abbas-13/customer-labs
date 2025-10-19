@@ -1,4 +1,5 @@
 import { Button, Form, Input, message, Select } from "antd";
+import classNames from "classnames";
 
 const AddSegment = () => {
   const [addSegmentForm] = Form.useForm();
@@ -25,7 +26,6 @@ const AddSegment = () => {
     const currentAvValues = allOptions.filter(
       (option) => !selectedValues.includes(option.value)
     );
-    console.log(formValues.segments, selectedValues, currentAvValues);
     return currentAvValues;
   };
 
@@ -113,9 +113,10 @@ const AddSegment = () => {
                     return (
                       <div className="flex w-full gap-1 justify-between items-center mb-4">
                         <div
-                          className={`h-3 w-3 rounded-full ${getCircleColor(
-                            selectedValue
-                          )}`}
+                          className={classNames(
+                            "h-3 w-3 rounded-full",
+                            getCircleColor(selectedValue)
+                          )}
                         ></div>
                         <Form.Item
                           required
@@ -144,17 +145,12 @@ const AddSegment = () => {
                   })}
                   <Form.Item>
                     <p
-                      className="underline underline-offset-8 text-[#57AA8E]"
-                      style={{
-                        color:
-                          fields.length < allOptions.length
-                            ? "#57AA8E"
-                            : "#D3D3D3",
-                        cursor:
-                          fields.length < allOptions.length
-                            ? "pointer"
-                            : "not-allowed",
-                      }}
+                      className={classNames(
+                        "underline underline-offset-8",
+                        fields.length < allOptions.length
+                          ? "text-[#57AA8E] cursor-pointer"
+                          : "text-[#D3D3D3] cursor-not-allowed"
+                      )}
                       onClick={() => {
                         if (fields.length < allOptions.length) {
                           add();
