@@ -1,6 +1,9 @@
 import { Button, Form, Input, message, Select } from "antd";
+import classNames from "classnames";
 
-const AddSegment = () => {
+import styles from "./addSegment.module.css";
+
+const AddSegment = ({ closeDrawer }) => {
   const [addSegmentForm] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -25,7 +28,6 @@ const AddSegment = () => {
     const currentAvValues = allOptions.filter(
       (option) => !selectedValues.includes(option.value)
     );
-    console.log(formValues.segments, selectedValues, currentAvValues);
     return currentAvValues;
   };
 
@@ -79,7 +81,10 @@ const AddSegment = () => {
         className="h-[calc(100%-50px)] flex justify-between flex-col"
       >
         <div className="px-4">
-          <Form.Item name="segmentName" required>
+          <Form.Item
+            name="segmentName"
+            rules={[{ required: true, message: "Please enter segment name" }]}
+          >
             <Input
               placeholder="Name of the segment"
               className="rounded-none my-[1rem] mx-0"
@@ -90,13 +95,13 @@ const AddSegment = () => {
             To save your segment, you need to add the schemas to build the query
           </p>
 
-          <div className="flex gap-4 my-4 justify-end">
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-green-500"></div>
+          <div className={styles["badges-container"]}>
+            <div className={styles["badge-container"]}>
+              <div className={styles["user-traits-badge"]}></div>
               <p> - User Traits</p>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+            <div className={styles["badge-container"]}>
+              <div className={styles["group-traits-badge"]}></div>
               <p> - Group Traits</p>
             </div>
           </div>
@@ -111,18 +116,24 @@ const AddSegment = () => {
                       addSegmentForm.getFieldsValue().segments[name];
 
                     return (
-                      <div className="flex w-full gap-1 justify-between items-center mb-4">
+                      <div className={styles["form-item-container"]}>
                         <div
-                          className={`h-3 w-3 rounded-full ${getCircleColor(
-                            selectedValue
-                          )}`}
+                          className={classNames(
+                            "h-3 w-3 rounded-full",
+                            getCircleColor(selectedValue)
+                          )}
                         ></div>
                         <Form.Item
-                          required
                           className="mb-0 w-[75%]"
                           {...restField}
                           name={[name, "schema"]}
                           key={key}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select schema option",
+                            },
+                          ]}
                         >
                           <Select
                             className="h-[48px] rounded-none"
@@ -131,30 +142,25 @@ const AddSegment = () => {
                           />
                         </Form.Item>
                         <div
-                          className="h-[48px] w-[48px] p-2 flex items-center rounded-md bg-[#F2FAF8]"
+                          className={styles["remove-button-main"]}
                           onClick={() => {
                             remove(name);
                             handleSelectChange();
                           }}
                         >
-                          <div className="bg-[#5F6E87] rounded-md w-full h-1"></div>
+                          <div className={styles["remove-button-inside"]}></div>
                         </div>
                       </div>
                     );
                   })}
-                  <Form.Item>
+                  <Form.Item className="w-max">
                     <p
-                      className="underline underline-offset-8 text-[#57AA8E]"
-                      style={{
-                        color:
-                          fields.length < allOptions.length
-                            ? "#57AA8E"
-                            : "#D3D3D3",
-                        cursor:
-                          fields.length < allOptions.length
-                            ? "pointer"
-                            : "not-allowed",
-                      }}
+                      className={classNames(
+                        "underline underline-offset-8",
+                        fields.length < allOptions.length
+                          ? "text-[#57AA8E] cursor-pointer"
+                          : "text-[#D3D3D3] cursor-not-allowed"
+                      )}
                       onClick={() => {
                         if (fields.length < allOptions.length) {
                           add();
@@ -170,14 +176,22 @@ const AddSegment = () => {
           </Form.List>
         </div>
         <Form.Item className="m-0">
-          <div className="flex gap-3 h-24 bg-gray-100 items-center p-2 pl-4">
+          <div className={styles["buttons-container"]}>
             <Button
               className="text-white bg-[#57AA8E] h-[42px]"
               htmlType="submit"
             >
               Save the segment
             </Button>
-            <Button className="h-[42px] text-red">Cancel</Button>
+            <Button
+              className="h-[42px] text-red"
+              onClick={() => {
+                closeDrawer();
+                addSegmentForm.resetFields();
+              }}
+            >
+              Cancel
+            </Button>
           </div>
         </Form.Item>
       </Form>

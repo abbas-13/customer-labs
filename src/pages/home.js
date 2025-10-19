@@ -13,7 +13,7 @@ const Home = () => {
   setHeading("View Audience");
 
   return (
-    <div className="w-full h-full backdrop-blur-lg bg-black/30 p-2">
+    <div className={styles["home-container"]}>
       <Button
         size="large"
         ghost
@@ -26,18 +26,18 @@ const Home = () => {
         width={400}
         className={styles.drawer}
         title={
-          <div className="h-16 bg-[#53A1B2] w-full flex gap-2 items-center p-2">
+          <div className={styles["heading-container"]}>
             <LeftOutlined
               onClick={() => setDrawerOpen(false)}
               className="text-lg text-white stroke-white stroke-[50]"
             />
-            <h2 className="text-white text-lg">Saving Segment</h2>
+            <h2 className={styles.heading}>Saving Segment</h2>
           </div>
         }
         open={drawerOpen}
         closable={false}
       >
-        <AddSegment />
+        <AddSegment closeDrawer={() => setDrawerOpen(false)} />
       </Drawer>
     </div>
   );

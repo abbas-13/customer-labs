@@ -1,0 +1,31 @@
+.buttons-container {
+  @apply flex gap-3 h-24 bg-gray-100 items-center p-2 pl-4;
+}
+
+.form-item-container {
+  @apply flex w-full gap-1 justify-between items-center mb-4;
+}
+
+.remove-button-main {
+  @apply h-[48px] w-[48px] p-2 flex items-center rounded-md bg-[#F2FAF8];
+}
+
+.remove-button-inside {
+  @apply bg-[#5F6E87] rounded-md w-full h-1;
+}
+
+.badges-container {
+  @apply flex gap-4 my-4 justify-end;
+}
+
+.badge-container {
+  @apply flex items-center gap-2;
+}
+
+.user-traits-badge {
+  @apply h-3 w-3 rounded-full bg-green-500;
+}
+
+.group-traits-badge {
+  @apply h-3 w-3 rounded-full bg-red-500;
+}
