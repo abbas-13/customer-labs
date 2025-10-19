@@ -183,7 +183,13 @@ const AddSegment = ({ closeDrawer }) => {
             >
               Save the segment
             </Button>
-            <Button className="h-[42px] text-red" onClick={closeDrawer}>
+            <Button
+              className="h-[42px] text-red"
+              onClick={() => {
+                closeDrawer();
+                addSegmentForm.resetFields();
+              }}
+            >
               Cancel
             </Button>
           </div>
