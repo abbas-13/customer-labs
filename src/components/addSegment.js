@@ -145,7 +145,7 @@ const AddSegment = () => {
                       </div>
                     );
                   })}
-                  <Form.Item>
+                  <Form.Item className="w-max">
                     <p
                       className={classNames(
                         "underline underline-offset-8",
