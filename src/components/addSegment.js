@@ -81,7 +81,10 @@ const AddSegment = () => {
         className="h-[calc(100%-50px)] flex justify-between flex-col"
       >
         <div className="px-4">
-          <Form.Item name="segmentName" required>
+          <Form.Item
+            name="segmentName"
+            rules={[{ required: true, message: "Please enter segment name" }]}
+          >
             <Input
               placeholder="Name of the segment"
               className="rounded-none my-[1rem] mx-0"
@@ -121,11 +124,16 @@ const AddSegment = () => {
                           )}
                         ></div>
                         <Form.Item
-                          required
                           className="mb-0 w-[75%]"
                           {...restField}
                           name={[name, "schema"]}
                           key={key}
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please select schema option",
+                            },
+                          ]}
                         >
                           <Select
                             className="h-[48px] rounded-none"
